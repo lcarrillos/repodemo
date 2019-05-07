@@ -1,0 +1,58 @@
++-------------------------------------+
+| Deployment de proyecto Net Core     |
++-------------------------------------+
+
+    Carpeta: 09 Soporte\dotnetcore
+        Instalar dotnet-hosting-2.2.4-win.exe
+            Instala 3 componentes:
+                - Microsoft .Net Core 2.2.4 - Windows Server Hosting
+                - Microsoft .Net Core Runtime 2.2.4 (x64)
+                - Microsoft .Net Core Runtime 2.2.4 (x86)
+    
+    IIS
+    
+        Agregar Application pool en IIS
+            Nombre:                             AspNetCore
+            Version de .Net CLR:                Sin codigo administrado
+            Modo de canalizacion administrada:  Integrada
+        Agregar sitio web
+            Nombre del sitio:                   webnetcore
+            Grupo de aplicaciones:              AspNetCore
+            Ruta de acceso fisica:              Published\webnetcore
+        Iniciar sitio web
+        
+        Publicar varias aplicaciones en localhost
+            - Abrir archivo %windir%\System32\drivers\etc\hosts
+            - Agregar:
+                127.0.0.1        app1.cibertecwebapp.com
+                127.0.0.1        app2.cibertecwebapp.com
+            - Agregar sitio en IIS
+                Nombre del Sitio:               app1_cibertecwebapp_com
+                Ruta de acceso fisica:          D:\Published\webnetcore
+                Nombre de host:                 app1.cibertecwebapp.com
+            - Agregar sitio en IIS
+                Nombre del Sitio:               app2_cibertecwebapp_com
+                Ruta de acceso fisica:          D:\Published\webnetcore
+                Nombre de host:                 app2.cibertecwebapp.com
+            - Ahora se puede ingresar al navegador
+                app1.cibertecwebapp.com
+                app2.cibertecwebapp.com
+
+        Publicar manualmente
+            - Abrir linea de comandos
+            - Ingresar a la carpeta del proyecto:   C:\Users\VS2017-WEB\Desktop\LACS\VS2017-WEB\Repos\cursoweb\cap2\webnetcore
+            - dotnet run
+            - Revisar archivo:                      Properties -> launchSettings.json
+                - seccion:                          webnetcore -> applicationUrl    -> https://localhost:5001;http://localhost:5000
+                
+
++-------------------------------------+
+| GitHub    https://github.com/       |
++-------------------------------------+
+
+    - Ventana de comandos:
+        git config --list --load
+
+
+
+
